@@ -9,11 +9,15 @@
     "timestamps": true
   },
   "attributes": {
-    "UID": {
-      "type": "uid"
-    },
-    "Name": {
+    "name": {
       "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "product": {
+      "model": "product"
     }
   }
 }

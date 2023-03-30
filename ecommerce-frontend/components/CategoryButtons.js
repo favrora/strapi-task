@@ -10,7 +10,6 @@ const CategoryButtons = ({ categories = [] }) => {
           </a>
         </Link>
       ))}
-      Categ
     </div>
   )
 }
