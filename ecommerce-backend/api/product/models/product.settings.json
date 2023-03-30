@@ -9,8 +9,25 @@
     "timestamps": true
   },
   "attributes": {
-    "Text": {
+    "UID": {
+      "type": "uid"
+    },
+    "Title": {
       "type": "string"
+    },
+    "Image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "Price": {
+      "type": "integer"
     }
   }
 }

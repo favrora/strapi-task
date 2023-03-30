@@ -9,7 +9,10 @@
     "timestamps": true
   },
   "attributes": {
-    "Text": {
+    "UID": {
+      "type": "uid"
+    },
+    "Name": {
       "type": "string"
     }
   }

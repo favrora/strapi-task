@@ -1,63 +1,30 @@
-**:no_entry: Deprecated**
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This repository is no longer maintained and only works for Strapi v3. To find the newest Strapi v4 starters, check out the [starters-and-templates monorepo](https://github.com/strapi/starters-and-templates/).
+## Getting Started
 
----
+First, run the development server:
 
-# Strapi Starter Next.js E-commerce
-
-Next.js starter for creating a simple e-commerce website with Strapi.
-
-![screenshot image](screenshot.png)
-
-This starter allows you to try Strapi with Next.js with the example of a simple e-commerce website where you can buy dev stickers. It is fully customizable and due to the fact that it is open source, fully open to contributions. So do not hesitate to add new features and report bugs!
-
-This starter uses the [Strapi E-commerce template](https://github.com/strapi/strapi-template-ecommerce)
-
-Check out all of our starters [here](https://strapi.io/starters)
-
-## Features
-
-- 1 Component
-- 2 Collection types: Product, Category
-- 27 Created products
-- 6 Created categories
-- Permissions set to `true` for product and category
-- Responsive design using Tailwind css
-- Slug system
-- Publication system (draft & published)
-- Role based access controls
-- Payments handled with Snipcart
-
-This starter is using [Snipcart](https://snipcart.com/) which allows you setup a shopping cart on any website. They wrote a [tutorial](https://snipcart.com/blog/strapi-nuxt-ecommerce-tutorial) teaching you how to create this website but selling cupcakes!
-
-Payment will not work on localhost, we are redirecting you to this [tutorial](https://snipcart.com/blog/develop-a-snipcart-powered-website-locally-using-ngrok) if you want to test payment locally.
-
-## Getting started
-
-Use our `create-strapi-starter` CLI to create your project.
-
-```sh
-npx create-strapi-starter@3 my-site next-ecommerce
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-The CLI will create a monorepo, install dependencies, and run your project automatically.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The Next frontend server will run here => [http://localhost:3000](http://localhost:3000)
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-The Strapi backend server will run here => [http://localhost:1337](http://localhost:1337)
+## Learn More
 
-## Deploying to production
+To learn more about Next.js, take a look at the following resources:
 
-You will need to deploy the `frontend` and `backend` projects separately. Here are the docs to deploy each one:
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- [Deploy Strapi](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/deployment.html#hosting-provider-guides)
-- [Deploy Next](https://nextjs.org/docs/deployment)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-Don't forget to setup the environment variables on your production app:
+## Deploy on Vercel
 
-For the frontend the following environment variable is required: 
-- `NEXT_PUBLIC_STRAPI_API_URL`: URL of your Strapi backend, without trailing slash
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-
-Enjoy this starter!
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
