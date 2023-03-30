@@ -1,10 +1,19 @@
 import NextImage from "./Image"
 import Link from "next/link"
 
-const ProductsList = ({ products }) => {
+type Props = {
+  id: number
+  slug: string
+  image: string
+  name: string
+  title: string
+  description: string
+}
+
+const ProductsList = (products: any) => {
   return (
     <div className="m-6 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-8">
-      {products.map((_product) => (
+      {products.map((_product: Props) => (
         <div
           key={_product.id}
           className="border rounded-lg bg-gray-100 hover:shadow-lg shadow-md"

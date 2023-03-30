@@ -1,13 +1,22 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
-
 import NextImage from "../../components/Image"
 import { getProducts, getProduct } from "../../utils/api"
 import { getStrapiMedia } from "../../utils/medias"
 
-const ProductPage = ({ product }) => {
+type Props = {
+  slug: string
+  title: string
+  image: any
+  price: number
+  description: string
+  status: string
+  id: number
+}
+
+const ProductPage = (product: Props) => {
   const router = useRouter()
-  if (router.isFallback) {
+  if (router?.isFallback) {
     return <div>Loading product...</div>
   }
 
@@ -64,19 +73,20 @@ const ProductPage = ({ product }) => {
 
 export default ProductPage
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps(params: any) {
   const product = await getProduct(params.slug)
+
   return { props: { product } }
 }
 
 export async function getStaticPaths() {
   const products = await getProducts()
   return {
-    paths: products.map((_product) => {
+    paths: products.map((_product: Props) => {
       return {
         params: { slug: _product.slug },
       }
     }),
-    fallback: true,
+    fallback: false
   }
 }
