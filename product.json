@@ -10,38 +10,48 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "richtext"
+      "type": "string",
+      "required": true
     },
     "price": {
       "type": "float"
     },
     "image": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
         "files",
+        "images",
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     },
     "slug": {
       "type": "uid",
       "targetField": "title"
     },
     "categories": {
-      "model": "category"
+      "collection": "category",
+      "via": "products"
+    },
+    "Custom_field": {
+      "type": "component",
+      "repeatable": true,
+      "component": "custom.custom-field"
     },
     "status": {
       "type": "enumeration",
       "enum": [
         "draft",
         "published"
-      ]
+      ],
+      "default": "published",
+      "required": true
     }
   }
 }
