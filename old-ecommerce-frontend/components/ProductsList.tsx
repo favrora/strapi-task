@@ -19,7 +19,6 @@ const ProductsList = (products: any) => {
           className="border rounded-lg bg-gray-100 hover:shadow-lg shadow-md"
         >
           <Link href={`/products/${_product.slug}`}>
-            <a>
               <div className="w-full bg-white">
                 <div className="rounded-t-lg pt-2 pb-2 w-1/2 mx-auto">
                   <NextImage media={_product.image} />
@@ -33,7 +32,6 @@ const ProductsList = (products: any) => {
                   {_product.description}
                 </div>
               </div>
-            </a>
           </Link>
         </div>
       ))}

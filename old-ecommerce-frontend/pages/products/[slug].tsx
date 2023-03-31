@@ -16,7 +16,7 @@ type Props = {
 
 const ProductPage = (product: Props) => {
   const router = useRouter()
-  if (router?.isFallback) {
+  if (router.isFallback) {
     return <div>Loading product...</div>
   }
 
@@ -74,19 +74,22 @@ const ProductPage = (product: Props) => {
 export default ProductPage
 
 export async function getStaticProps(params: any) {
-  const product = await getProduct(params.slug)
+  let product = await getProduct(params.slug)
+
+  // product = JSON.parse(JSON.stringify(product))
 
   return { props: { product } }
 }
 
 export async function getStaticPaths() {
-  const products = await getProducts()
+  let products = await getProducts()
+
   return {
-    paths: products.map((_product: Props) => {
+    paths: products.map((_product: any) => {
       return {
         params: { slug: _product.slug },
       }
     }),
-    fallback: false
+    fallback: false // false  'blocking'
   }
 }

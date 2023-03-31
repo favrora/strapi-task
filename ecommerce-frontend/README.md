@@ -1,30 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Login Flow Example
 
-## Getting Started
+Basic app that shows how to implement login with a third party login provider.
 
-First, run the development server:
+## Setup
 
+**1 —** Clone this repository and install the dependencies
 ```bash
-npm run dev
-# or
-yarn dev
+git clone git@github.com:strapi/strapi-examples.git
+cd strapi-examples/login-react
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**2 —** Install a Strapi backend
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+In a another folder, run these commands:
+```bash
+yarn create strapi-app my-project --quickstart
+# or
+npx create-strapi-app my-project --quickstart
+```
 
-## Learn More
+**3 —** Create the Admin user: http://localhost:1337/admin/auth/register
 
-To learn more about Next.js, take a look at the following resources:
+**4 —** Configure one or several providers by following the instructions here: https://docs.strapi.io/developer-docs/latest/plugins/users-permissions.html#providers
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**5 -** Launch the app
+```bash
+REACT_APP_BACKEND_URL=http://localhost:1337 yarn start
+```
+NB: If you use ngrok, use the ngrok url for `REACT_APP_BACKEND_URL` instead of `http://localhost:1337`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Env vars
+| Name | Description | Example |
+| - | - | - |
+| **REACT_APP_BACKEND_URL** | **Required.** The absolute url of your Strapi app. | `http://localhost:1337` |
 
-## Deploy on Vercel
+## Troubleshooting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Make sure you have set the correct backend url using the env variable `REACT_APP_BACKEND_URL`.
+If you're using ngrok, the backend url should be the ngrok url, otherwise it should probably be `http://localhost:1337`.
