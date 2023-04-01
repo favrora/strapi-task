@@ -3,13 +3,18 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Header from "./components/Header"
 import Home from "./pages/Home"
 import Product from "./pages/Product"
+import Register from "./pages/Register"
+import Login from "./pages/Login"
 
 const App = () => {
   return (
     <Router>
+      <Header />
       <Switch>
-        <Route exact path="/"><Header /><Home /></Route>
-        <Route exact path="/product/:productSlug"><Header /><Product /></Route>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/product/:productSlug" component={Product} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
       </Switch>
     </Router>
   )

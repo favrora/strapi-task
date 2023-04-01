@@ -34,20 +34,20 @@ function Home() {
 
   return (
     <div className="container">
-        {product.map((product: Props) => (
-          <div className="row mt-4 mb-4">
+      {product.map((product: Props) => (
+        <div className="row mt-4 mb-4">
           <div className="col-12 col-md-6" key={product.id}>
             <img src={`http://localhost:1337${product.image.url}`} alt="" />
           </div>
-           <div className="col-12 col-md-6" key={product.id}>
-            <h1 className="product-title">{product.title} - ${product.price}</h1>
-            <div className="product-description">
-              {product.description}
-            </div>
+          <div className="col-12 col-md-6" key={product.id}>
+            <h1 className="product-title">
+              {product.title} - ${product.price}
+            </h1>
+            <div className="product-description">{product.description}</div>
             <button className="btn btn-primary mt-3">Add to cart</button>
           </div>
-          </div>
-        ))}
+        </div>
+      ))}
     </div>
   )
 }
