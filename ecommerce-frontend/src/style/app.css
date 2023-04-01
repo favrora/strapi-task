@@ -1,0 +1,33 @@
+body {
+  background: #edf2f6;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.card-img-top {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card {
+  border: 0;
+  transition: 350ms;
+  box-shadow: 0 0 20px #00000024;
+}
+
+.card-link {
+  text-decoration: none;
+  color: #4a5568;
+  transition: 350ms;
+}
+
+.card-link:hover {
+  color: #0077ff;
+}
+
+.card:hover {
+  box-shadow: 0 0 40px #00000038;
+}

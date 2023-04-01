@@ -1,0 +1,11 @@
+.tmp
+.cache/
+coverage/
+.next
+.nyc_output/
+**/.yarn/**
+**/.pnp.*
+/dist*/
+node_modules/
+public/
+api/

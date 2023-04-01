@@ -1,7 +1,7 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Product from "./pages/Product";
+import React from "react"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import Product from "./pages/Product"
 // import LoginRedirect from "./pages/LoginRedirect";
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
         <Route exact path="/product/:productSlug" component={Product} />
       </Switch>
     </Router>
-  );
-};
+  )
+}
 
-export default App;
+export default App
