@@ -6,10 +6,13 @@ import { useParams } from "react-router-dom"
 type Props = {
   id?: number
   slug?: string
-  image?: string
+  image: {
+    url?: string
+  }
   name?: string
   title?: string
   description?: string
+  price?: number
 }
 
 function Home() {
@@ -31,13 +34,20 @@ function Home() {
 
   return (
     <div className="container">
-      <div className="row mb-3">
         {product.map((product: Props) => (
-          <div className="col-12 col-sm-6 col-md-4" key={product.id}>
-            {product.title}
+          <div className="row mt-4 mb-4">
+          <div className="col-12 col-md-6" key={product.id}>
+            <img src={`http://localhost:1337${product.image.url}`} alt="" />
+          </div>
+           <div className="col-12 col-md-6" key={product.id}>
+            <h1 className="product-title">{product.title} - ${product.price}</h1>
+            <div className="product-description">
+              {product.description}
+            </div>
+            <button className="btn btn-primary mt-3">Add to cart</button>
+          </div>
           </div>
         ))}
-      </div>
     </div>
   )
 }

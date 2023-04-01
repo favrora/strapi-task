@@ -1,20 +1,15 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Header from "./components/Header"
 import Home from "./pages/Home"
 import Product from "./pages/Product"
-// import LoginRedirect from "./pages/LoginRedirect";
 
 const App = () => {
   return (
     <Router>
       <Switch>
-        {/* <Route
-          exact
-          path="/connect/:providerName/redirect"
-          component={LoginRedirect}
-        /> */}
-        <Route exact path="/" component={Home} />
-        <Route exact path="/product/:productSlug" component={Product} />
+        <Route exact path="/"><Header /><Home /></Route>
+        <Route exact path="/product/:productSlug"><Header /><Product /></Route>
       </Switch>
     </Router>
   )

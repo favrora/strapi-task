@@ -2,6 +2,9 @@
  ********* Global CSS Code *********
  **********************************/
 
+@import "style/header.css";
 @import "style/app.css";
 
 /* Import additional components */
+@import "style/products.css";
+@import "style/auth.css";

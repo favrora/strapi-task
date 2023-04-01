@@ -6,6 +6,15 @@ h1 {
   margin-bottom: 20px;
 }
 
+img {
+  max-width: 100%;
+}
+
+.btn {
+  width: 100%;
+}
+
+/* Card box style */
 .card-img-top {
   height: 200px;
   background-size: cover;
@@ -30,4 +39,16 @@ h1 {
 
 .card:hover {
   box-shadow: 0 0 40px #00000038;
+}
+
+@media screen and (max-width: 768px) {
+  .card-img-top {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+  .card-img-top {
+    height: 150px;
+  }
 }
