@@ -4,7 +4,7 @@ function Header() {
   return (
     <div className="header">
       <a href="/" className="header-logo">
-        <img src="/strapi.png" alt="Site logo"></img>
+        <img src="/strapi.png" alt="Site logo" />
       </a>
       <a href="/register" className="header-menu">
         Register

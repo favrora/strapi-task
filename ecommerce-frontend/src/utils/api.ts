@@ -1,28 +1,62 @@
-export function getStrapiURL(path: string) {
-  return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
-  }${path}`
+import Cookie from "js-cookie"
+import axios from "axios"
+
+const API_URL =
+  process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
+
+// register a new user
+export const registerUser = (username, email, password) => {
+  // prevent function from being ran on the server
+  if (typeof window === "undefined") {
+    return Promise.resolve(false)
+  }
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${API_URL}/auth/local/register`, { username, email, password })
+      .then((res) => {
+        //set token response from Strapi for server validation
+        Cookie.set("token", res.data.jwt, { sameSite: "strict", secure: true })
+        //resolve the promise to set loading to false
+        resolve(res)
+      })
+      .catch((error) => {
+        //reject the promise and pass the error object back to the form
+        reject(error)
+      })
+  })
 }
 
-// Helper to make GET requests to Strapi
-export async function fetchAPI(path: string) {
-  const requestUrl = getStrapiURL(path)
-  const response = await fetch(requestUrl)
-  const data = await response.json()
-  return data
+// Login
+export const login = (identifier, password) => {
+  //prevent function from being ran on the server
+  if (typeof window === "undefined") {
+    return Promise.resolve(false)
+  }
+
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${API_URL}/auth/local/`, { identifier, password })
+      .then((res) => {
+        //set token response from Strapi for server validation
+        localStorage.removeItem("logout")
+        Cookie.set("token", res.data.jwt, { sameSite: "strict", secure: true })
+        //localStorage.setItem("userInfo", JSON.stringify(res.data.user));
+        //resolve the promise to set loading to false
+        resolve(res)
+      })
+      .catch((error) => {
+        //reject the promise and pass the error object back to the form
+        reject(error)
+      })
+  })
 }
 
-export async function getCategories() {
-  const categories = await fetchAPI("/categories")
-  return categories
-}
-
-export async function getProducts() {
-  const products = await fetchAPI("/products")
-  return products
-}
-
-export async function getProduct(slug: string) {
-  const products = await fetchAPI(`/products?slug=${slug}`)
-  return products?.[0]
+// Logout
+export const logout = () => {
+  //remove token and user cookie
+  Cookie.remove("token", { sameSite: "strict", secure: true })
+  // localStorage.removeItem("userInfo"); or  delete window.__user;
+  localStorage.removeItem("userInfo")
+  // sync logout between multiple windows
+  window.localStorage.setItem("logout", String(Date.now()))
 }
