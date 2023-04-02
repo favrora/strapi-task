@@ -1,13 +1,16 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { logoutUser } from "../reducers/userSlice"
+import { useHistory } from "react-router-dom";
 
 function Header() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const user = useSelector((state: any) => state.user.value)
 
   function logout() {
     dispatch(logoutUser())
+    history.push('/')
   }
 
   return (

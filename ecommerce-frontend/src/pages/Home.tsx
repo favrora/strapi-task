@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-// import { useSelector } from "react-redux";
-// import { getProducts } from "../utils/api"
 
 type Props = {
   id: number

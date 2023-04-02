@@ -4,7 +4,7 @@ import axios from "axios"
 const API_URL =
   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
 
-// register a new user
+// Register a new user
 export const registerUser = (username, email, password) => {
   // prevent function from being ran on the server
   if (typeof window === "undefined") {
@@ -49,14 +49,4 @@ export const login = (identifier, password) => {
         reject(error)
       })
   })
-}
-
-// Logout
-export const logout = () => {
-  //remove token and user cookie
-  Cookie.remove("token", { sameSite: "strict", secure: true })
-  // localStorage.removeItem("userInfo"); or  delete window.__user;
-  localStorage.removeItem("userInfo")
-  // sync logout between multiple windows
-  window.localStorage.setItem("logout", String(Date.now()))
 }

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-// import { useSelector } from "react-redux";
-// import { getProducts } from "../utils/api"
 
 type Props = {
   id?: number
@@ -19,8 +17,6 @@ function Home() {
   const { productSlug } = useParams<any>()
   const [product, setProduct] = useState<any>([])
 
-  console.log(productSlug)
-
   useEffect(() => {
     fetch(`http://localhost:1337/products?slug=${productSlug}`)
       .then((response) => {
@@ -35,11 +31,11 @@ function Home() {
   return (
     <div className="container">
       {product.map((product: Props) => (
-        <div className="row mt-4 mb-4">
-          <div className="col-12 col-md-6" key={product.id}>
-            <img src={`http://localhost:1337${product.image.url}`} alt="" />
+        <div className="row mt-4 mb-4" key={product.id}>
+          <div className="col-12 col-md-6">
+            <img src={`http://localhost:1337${product.image.url}`} alt={product.title} />
           </div>
-          <div className="col-12 col-md-6" key={product.id}>
+          <div className="col-12 col-md-6">
             <h1 className="product-title">
               {product.title} - ${product.price}
             </h1>

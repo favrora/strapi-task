@@ -2,9 +2,11 @@ import React, { useState } from "react"
 import { login } from "../utils/api"
 import { useDispatch } from "react-redux"
 import { loginUser } from "../reducers/userSlice"
+import { useHistory } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [data, updateData] = useState({
     identifier: "",
     password: "",
@@ -29,6 +31,7 @@ function Login() {
         // setUser(res.data.user);
         console.log(res)
         dispatch(loginUser(res.data.user.email))
+        history.push('/')
       })
       .catch((error) => {
         console.log(error)
