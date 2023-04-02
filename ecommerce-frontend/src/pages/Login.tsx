@@ -1,7 +1,10 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import { login } from "../utils/api"
+import { useDispatch } from "react-redux"
+import { loginUser } from "../reducers/userSlice"
 
 function Login() {
+  const dispatch = useDispatch()
   const [data, updateData] = useState({
     identifier: "",
     password: "",
@@ -24,6 +27,8 @@ function Login() {
         setLoading(false)
         // set authed User in global context to update header/app state
         // setUser(res.data.user);
+        console.log(res)
+        dispatch(loginUser(res.data.user.email))
       })
       .catch((error) => {
         console.log(error)

@@ -1,8 +1,11 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import { registerUser } from "../utils/api"
+import { useDispatch } from "react-redux"
+import { loginUser } from "../reducers/userSlice"
 import { v4 as uuidv4 } from "uuid"
 
 function Register() {
+  const dispatch = useDispatch()
   const [data, updateData] = useState({
     email: "",
     username: uuidv4(),
@@ -25,6 +28,7 @@ function Register() {
       .then((res: any) => {
         // set authed user in global context object
         setLoading(false)
+        dispatch(loginUser(res.data.user.email))
       })
       .catch((error) => {
         if (error.response.data) {
