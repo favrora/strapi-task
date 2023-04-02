@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_products_products",
+  "info": {
+    "name": "products",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "products": {
+      "collection": "product"
+    }
+  }
+}

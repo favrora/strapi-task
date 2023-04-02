@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import Cookie from "js-cookie"
+import axios from "axios"
 
 export const userSlice = createSlice({
   name: "user",
@@ -14,6 +15,7 @@ export const userSlice = createSlice({
     logoutUser: (state) => {
       // remove token and user cookie
       Cookie.remove("token", { sameSite: "strict", secure: true })
+      delete axios.defaults.headers.common["Authorization"];
 
       localStorage.removeItem("userEmail")
       state.value = ""

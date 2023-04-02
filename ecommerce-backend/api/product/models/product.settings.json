@@ -33,9 +33,6 @@
       "type": "uid",
       "targetField": "title"
     },
-    "categories": {
-      "model": "category"
-    },
     "status": {
       "type": "enumeration",
       "enum": [
