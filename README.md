@@ -20,11 +20,12 @@ Copy the repository and open the project folder in two terminals.
 
 ### Installing Backend
 
-1. In the folder `ecommerce-backend` run the command `npm i --legacy-peer-deps`. (If npm i not working)
+1. In the folder `ecommerce-backend` run the command `npm i`
 
 2. Starting the server `npm run develop`
 
 Admin Panel account credits:
+
 - `admin-mail@gmail.com`
 - `Test545454`
 
@@ -32,11 +33,12 @@ Admin Panel account credits:
 
 ### Installing Frontend
 
-1. In the folder `ecommerce-backend` run the command `npm i --legacy-peer-deps`
+1. In the folder `ecommerce-frontend` run the command `npm i`. (If not working, then `npm i --legacy-peer-deps`)
 
 2. `npm run start`
 
 Test User account credits:
+
 - `test@davvv.com`
 - `12345`
 
