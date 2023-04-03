@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
+import { changeCart } from "../reducers/userSlice"
+import Cookie from "js-cookie"
+import axios from "axios"
 
 type Props = {
   id?: number
@@ -15,9 +18,12 @@ type Props = {
 }
 
 function Home() {
+  const dispatch = useDispatch()
   const { productSlug } = useParams<any>()
   const [product, setProduct] = useState<any>([])
+  const userId = useSelector((state: any) => state.user.userId)
   const userCart = useSelector((state: any) => state.user.userCart)
+  const token = Cookie.get("token")
 
   useEffect(() => {
     fetch(`http://localhost:1337/products?slug=${productSlug}`)
@@ -29,6 +35,27 @@ function Home() {
         setProduct(data)
       })
   }, [productSlug])
+
+  function addProductToCart(productId) {
+    let arr = [...userCart]
+    arr.push(productId)
+
+    console.log(arr);
+
+    axios({
+      method: "put",
+      url: `http://localhost:1337/users/${userId}`,
+      headers: { Authorization: `Bearer ${token}` },
+      data: {
+        cart: {
+          products: arr,
+        },
+      },
+    })
+      .then(() => {
+        dispatch(changeCart(arr))
+      })
+  }
 
   return (
     <div className="container">
@@ -54,7 +81,9 @@ function Home() {
               </>
             ) : (
               <>
-                <button className="btn btn-primary mt-3">Add to cart</button>
+                <button className="btn btn-primary mt-3" onClick={() => addProductToCart(product.id)}>
+                  Add to cart
+                </button>
               </>
             )}
           </div>

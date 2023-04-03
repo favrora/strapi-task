@@ -38,9 +38,12 @@ export const userSlice = createSlice({
       sessionStorage.removeItem("userEmail")
       sessionStorage.removeItem("userCart")
     },
-    removeFromCart: () => {},
+    changeCart: (state, action) => {
+      sessionStorage.setItem("userCart", JSON.stringify(action.payload))
+      state.userCart = action.payload;
+    },
   },
 })
 
-export const { loginUser, logoutUser } = userSlice.actions
+export const { loginUser, logoutUser, changeCart } = userSlice.actions
 export default userSlice.reducer

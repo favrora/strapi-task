@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { changeCart } from "../reducers/userSlice"
 import Cookie from "js-cookie"
 import axios from "axios"
 
@@ -16,6 +17,7 @@ type Props = {
 }
 
 function Home() {
+  const dispatch = useDispatch()
   const [products, setProducts] = useState([])
   const userId = useSelector((state: any) => state.user.userId)
   const userCart = useSelector((state: any) => state.user.userCart)
@@ -27,17 +29,18 @@ function Home() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response: any) => {
-        return response // .json()
+        return response
       })
       .then((data) => {
         console.log(data)
         setProducts(data.data.cart.products)
       })
-  }, [token])
+  }, [token, userCart])
 
-  function removeFromCart(productId) {
-    let arr = userCart
-    arr = arr.filter((x) => x !== productId)
+  function removeProductCart(productId) {
+    let arr = userCart.filter((x: number) => x !== productId)
+
+    console.log(arr);
 
     axios({
       method: "put",
@@ -49,11 +52,8 @@ function Home() {
         },
       },
     })
-      .then((response: any) => {
-        return response // .json()
-      })
-      .then((data) => {
-        console.log(data)
+      .then(() => {
+        dispatch(changeCart(arr))
       })
   }
 
@@ -74,7 +74,7 @@ function Home() {
 
                 <div
                   className="product-remove"
-                  onClick={() => removeFromCart(product.id)}
+                  onClick={() => removeProductCart(product.id)}
                 >
                   <img src="/remove.png" alt="Remove from cart icon" />
                 </div>
