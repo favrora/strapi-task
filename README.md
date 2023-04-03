@@ -21,8 +21,10 @@ Copy the repository and open the project folder in two terminals.
 2. Starting the server `npm run develop`
 
 Admin Panel account credits:
-- `david.voskanyan1213@gmail.com`
+- `admin-mail@gmail.com`
 - `Test545454`
+
+<hr>
 
 ### Installing Frontend
 
@@ -31,11 +33,10 @@ Admin Panel account credits:
 2. `npm run start`
 
 Test User account credits:
-- `david.voskanyan1213@gmail.com`
-- `Test545454`
+- `test@davvv.com`
+- `12345`
 
-
-<br><br><br>
+<br>
 
 The Frontend server will run here => http://localhost:3000
 
