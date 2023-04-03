@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import Product from "./pages/Product"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
+import Cart from "./pages/Cart"
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/product/:productSlug" component={Product} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route path="/cart" component={Cart} />
       </Switch>
     </Router>
   )

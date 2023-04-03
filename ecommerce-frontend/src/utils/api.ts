@@ -16,7 +16,6 @@ export const registerUser = (username, email, password) => {
       .then((res) => {
         //set token response from Strapi for server validation
         Cookie.set("token", res.data.jwt, { sameSite: "strict", secure: true })
-        setAuthToken(res.data.jwt)
         //resolve the promise to set loading to false
         resolve(res)
       })
@@ -39,9 +38,7 @@ export const login = (identifier, password) => {
       .post(`${API_URL}/auth/local/`, { identifier, password })
       .then((res) => {
         //set token response from Strapi for server validation
-        localStorage.removeItem("logout")
         Cookie.set("token", res.data.jwt, { sameSite: "strict", secure: true })
-        setAuthToken(res.data.jwt)
         //resolve the promise to set loading to false
         resolve(res)
       })
@@ -50,12 +47,4 @@ export const login = (identifier, password) => {
         reject(error)
       })
   })
-}
-
-export const setAuthToken = token => {
-   if (token) {
-     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-   } else {
-     delete axios.defaults.headers.common["Authorization"];
-   }
 }

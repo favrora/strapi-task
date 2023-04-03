@@ -5,10 +5,11 @@ import { logoutUser } from "../reducers/userSlice"
 function Header() {
   const dispatch = useDispatch()
   const user = useSelector((state: any) => state.user.userEmail)
+  const userCart = useSelector((state: any) => state.user.userCart)
 
   function logout() {
     dispatch(logoutUser())
-    window.location.reload();
+    window.location.reload()
   }
 
   return (
@@ -19,9 +20,14 @@ function Header() {
       <div className="">{user}</div>
       {user ? (
         <>
-          <span className="btn-link header-menu" onClick={logout}>
-            Logout
-          </span>
+          <div>
+            <a href="/cart" className="header-menu">
+              Cart ({userCart.length})
+            </a>
+            <span className="btn-link header-menu" onClick={logout}>
+              Logout
+            </span>
+          </div>
         </>
       ) : (
         <>
