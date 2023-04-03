@@ -3,11 +3,9 @@ import { registerUser } from "../utils/api"
 import { useDispatch } from "react-redux"
 import { loginUser } from "../reducers/userSlice"
 import { v4 as uuidv4 } from "uuid"
-import { useHistory } from "react-router-dom";
 
 function Register() {
   const dispatch = useDispatch()
-  const history = useHistory()
   const [data, updateData] = useState({
     email: "",
     username: uuidv4(),
@@ -30,8 +28,8 @@ function Register() {
       .then((res: any) => {
         // set authed user in global context object
         setLoading(false)
-        dispatch(loginUser(res.data.user.email))
-        history.push('/')
+        dispatch(loginUser(res.data.user))
+        window.location.href = "/"
       })
       .catch((error) => {
         if (error.response.data) {

@@ -2,11 +2,9 @@ import React, { useState } from "react"
 import { login } from "../utils/api"
 import { useDispatch } from "react-redux"
 import { loginUser } from "../reducers/userSlice"
-import { useHistory } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch()
-  const history = useHistory()
   const [data, updateData] = useState({
     identifier: "",
     password: "",
@@ -29,9 +27,9 @@ function Login() {
         setLoading(false)
         // set authed User in global context to update header/app state
         // setUser(res.data.user);
-        console.log(res)
-        dispatch(loginUser(res.data.user.email))
-        history.push('/')
+        console.log(res.data.user)
+        dispatch(loginUser(res.data.user))
+        window.location.href = "/"
       })
       .catch((error) => {
         console.log(error)

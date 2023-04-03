@@ -30,7 +30,21 @@ function Home() {
   }, [])
 
   useEffect(() => {
-    axios.get("http://localhost:1337/users/me?populate=role", { headers: {"Authorization" : `Bearer ${token}`} })
+    axios({
+    method: 'put',
+    url: 'http://localhost:1337/users/1',
+    headers: {"Authorization" : `Bearer ${token}`},
+    data: {
+      cart: {
+        products: [1, 2]
+      }
+    }
+})
+
+
+    /* axios.get("http://localhost:1337/users/me", {
+      headers: {"Authorization" : `Bearer ${token}`}
+    }) */
       .then((response: any) => {
         return response // .json()
       })

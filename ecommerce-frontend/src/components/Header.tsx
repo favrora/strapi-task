@@ -1,16 +1,14 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { logoutUser } from "../reducers/userSlice"
-import { useHistory } from "react-router-dom";
 
 function Header() {
   const dispatch = useDispatch()
-  const history = useHistory()
-  const user = useSelector((state: any) => state.user.value)
+  const user = useSelector((state: any) => state.user.userEmail)
 
   function logout() {
     dispatch(logoutUser())
-    history.push('/')
+    window.location.reload();
   }
 
   return (
