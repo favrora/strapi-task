@@ -40,7 +40,7 @@ function Home() {
     let arr = [...userCart]
     arr.push(productId)
 
-    console.log(arr);
+    console.log(arr)
 
     axios({
       method: "put",
@@ -51,10 +51,9 @@ function Home() {
           products: arr,
         },
       },
+    }).then(() => {
+      dispatch(changeCart(arr))
     })
-      .then(() => {
-        dispatch(changeCart(arr))
-      })
   }
 
   return (
@@ -81,7 +80,10 @@ function Home() {
               </>
             ) : (
               <>
-                <button className="btn btn-primary mt-3" onClick={() => addProductToCart(product.id)}>
+                <button
+                  className="btn btn-primary mt-3"
+                  onClick={() => addProductToCart(product.id)}
+                >
                   Add to cart
                 </button>
               </>

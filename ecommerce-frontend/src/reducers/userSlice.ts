@@ -26,6 +26,7 @@ export const userSlice = createSlice({
       for (let i = 0; i < action.payload.cart.products.length; i++) {
         cart.push(action.payload.cart.products[i].id)
       }
+      console.log("logg", cart)
 
       sessionStorage.setItem("userCart", JSON.stringify(cart))
     },
@@ -40,7 +41,7 @@ export const userSlice = createSlice({
     },
     changeCart: (state, action) => {
       sessionStorage.setItem("userCart", JSON.stringify(action.payload))
-      state.userCart = action.payload;
+      state.userCart = action.payload
     },
   },
 })

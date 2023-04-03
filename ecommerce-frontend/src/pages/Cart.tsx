@@ -40,7 +40,7 @@ function Home() {
   function removeProductCart(productId) {
     let arr = userCart.filter((x: number) => x !== productId)
 
-    console.log(arr);
+    console.log(arr)
 
     axios({
       method: "put",
@@ -51,10 +51,9 @@ function Home() {
           products: arr,
         },
       },
+    }).then(() => {
+      dispatch(changeCart(arr))
     })
-      .then(() => {
-        dispatch(changeCart(arr))
-      })
   }
 
   return (

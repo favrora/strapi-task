@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-import Cookie from "js-cookie"
-import axios from "axios"
 
 type Props = {
   id: number
@@ -16,7 +14,6 @@ type Props = {
 
 function Home() {
   const [products, setProducts] = useState([])
-  const token = Cookie.get("token")
 
   useEffect(() => {
     fetch("http://localhost:1337/products")
@@ -24,32 +21,9 @@ function Home() {
         return response.json()
       })
       .then((data) => {
-        // console.log(data)
         setProducts(data)
       })
   }, [])
-
-  useEffect(() => {
-    axios({
-      method: "put",
-      url: "http://localhost:1337/users/1",
-      headers: { Authorization: `Bearer ${token}` },
-      data: {
-        cart: {
-          products: [1, 2],
-        },
-      },
-    })
-      /* axios.get("http://localhost:1337/users/me", {
-      headers: {"Authorization" : `Bearer ${token}`}
-    }) */
-      .then((response: any) => {
-        return response // .json()
-      })
-      .then((data) => {
-        console.log(data)
-      })
-  }, [token])
 
   return (
     <div className="container">
