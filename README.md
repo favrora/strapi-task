@@ -21,10 +21,21 @@ Copy the repository and open the project folder in two terminals.
 2. Starting the server `npm run develop`
 
 Admin Panel account credits:
-- 
+- `david.voskanyan1213@gmail.com`
+- `Test545454`
+
+### Installing Frontend
+
+1. In the folder `ecommerce-backend` run the command `npm i --legacy-peer-deps`
+
+2. `npm run start`
+
+Test User account credits:
+- `david.voskanyan1213@gmail.com`
+- `Test545454`
 
 
-
+<br><br><br>
 
 The Frontend server will run here => http://localhost:3000
 
