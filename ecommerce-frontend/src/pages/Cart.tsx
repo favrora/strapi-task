@@ -32,15 +32,12 @@ function Home() {
         return response
       })
       .then((data) => {
-        console.log(data)
         setProducts(data.data.cart.products)
       })
   }, [token, userCart])
 
   function removeProductCart(productId) {
     let arr = userCart.filter((x: number) => x !== productId)
-
-    console.log(arr)
 
     axios({
       method: "put",
@@ -61,15 +58,13 @@ function Home() {
       <div className="row mb-3">
         <h1>Your Cart ({userCart.length} items)</h1>
 
-        <div className="card">
+        <div className="card p-4 pb-1">
           {products.map((product: Props) => (
             <div className="col-12" key={product.id}>
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between mb-3">
                 <a href={`/product/${product.slug}`}>
                   <h5 className="card-title">{product.title}</h5>
                 </a>
-
-                <div>${product.price}</div>
 
                 <div
                   className="product-remove"
@@ -80,6 +75,8 @@ function Home() {
               </div>
             </div>
           ))}
+
+          {products.length === 0 ? "No data" : ""}
         </div>
       </div>
     </div>

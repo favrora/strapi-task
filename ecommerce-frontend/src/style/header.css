@@ -19,3 +19,7 @@
 .header-logo:hover {
   opacity: 1;
 }
+
+.header-cart {
+  padding-right: 15px;
+}

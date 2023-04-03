@@ -2,13 +2,12 @@ import React, { useState } from "react"
 import { registerUser } from "../utils/api"
 import { useDispatch } from "react-redux"
 import { loginUser } from "../reducers/userSlice"
-import { v4 as uuidv4 } from "uuid"
 
 function Register() {
   const dispatch = useDispatch()
   const [data, updateData] = useState({
     email: "",
-    username: uuidv4(),
+    username: "",
     password: "",
   })
   const [loading, setLoading] = useState(false)
@@ -21,12 +20,13 @@ function Register() {
 
   const submitForm = async (e: any) => {
     e.preventDefault()
+    if (loading) return false
     data.email = e.target.email.value
     data.password = e.target.password.value
     setLoading(true)
+
     registerUser(data.username, data.email, data.password)
       .then((res: any) => {
-        // set authed user in global context object
         setLoading(false)
         dispatch(loginUser(res.data.user))
         window.location.href = "/"
@@ -66,7 +66,7 @@ function Register() {
               <form onSubmit={submitForm}>
                 <div className="row">
                   <div className="col-md-6">
-                    <label htmlFor="name">Email</label>
+                    <label htmlFor="email">Email</label>
                     <input
                       className="form-control"
                       name="email"
@@ -76,7 +76,17 @@ function Register() {
                   </div>
 
                   <div className="col-md-6">
-                    <label htmlFor="firstName">Password</label>
+                    <label htmlFor="username">Username</label>
+                    <input
+                      className="form-control"
+                      name="username"
+                      type="text"
+                      onChange={(event) => onChange(event)}
+                    />
+                  </div>
+
+                  <div className="col-md-6">
+                    <label htmlFor="password">Password</label>
                     <input
                       className="form-control"
                       type="password"

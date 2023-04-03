@@ -1,3 +1,0 @@
-Для установки зависимостей используем только:
-
-npm install --save --legacy-peer-deps

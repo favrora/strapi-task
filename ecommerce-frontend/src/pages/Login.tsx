@@ -19,15 +19,13 @@ function Login() {
 
   const submitForm = async (e: any) => {
     e.preventDefault()
+    if (loading) return false
     data.identifier = e.target.identifier.value
     data.password = e.target.password.value
     setLoading(true)
     login(data.identifier, data.password)
       .then((res: any) => {
         setLoading(false)
-        // set authed User in global context to update header/app state
-        // setUser(res.data.user);
-        console.log(res.data.user)
         dispatch(loginUser(res.data.user))
         window.location.href = "/"
       })
@@ -65,7 +63,7 @@ function Login() {
               <form onSubmit={submitForm}>
                 <div className="row">
                   <div className="col-md-6">
-                    <label htmlFor="name">Email</label>
+                    <label htmlFor="identifier">Email</label>
                     <input
                       className="form-control"
                       name="identifier"
@@ -75,7 +73,7 @@ function Login() {
                   </div>
 
                   <div className="col-md-6">
-                    <label htmlFor="firstName">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input
                       className="form-control"
                       type="password"

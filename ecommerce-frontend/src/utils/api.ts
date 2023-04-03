@@ -10,6 +10,7 @@ export const registerUser = (username, email, password) => {
   if (typeof window === "undefined") {
     return Promise.resolve(false)
   }
+
   return new Promise((resolve, reject) => {
     axios
       .post(`${API_URL}/auth/local/register`, { username, email, password })
@@ -28,7 +29,7 @@ export const registerUser = (username, email, password) => {
 
 // Login
 export const login = (identifier, password) => {
-  //prevent function from being ran on the server
+  // prevent function from being ran on the server
   if (typeof window === "undefined") {
     return Promise.resolve(false)
   }

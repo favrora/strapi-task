@@ -5,6 +5,10 @@ import { changeCart } from "../reducers/userSlice"
 import Cookie from "js-cookie"
 import axios from "axios"
 
+// toast
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 type Props = {
   id?: number
   slug?: string
@@ -31,16 +35,18 @@ function Home() {
         return response.json()
       })
       .then((data) => {
-        console.log(data)
         setProduct(data)
       })
   }, [productSlug])
 
   function addProductToCart(productId) {
+    if (!userId) {
+      toast.error("You need to be logged in to add to cart")
+      return false
+    }
+
     let arr = [...userCart]
     arr.push(productId)
-
-    console.log(arr)
 
     axios({
       method: "put",
@@ -91,6 +97,7 @@ function Home() {
           </div>
         </div>
       ))}
+      <ToastContainer />
     </div>
   )
 }

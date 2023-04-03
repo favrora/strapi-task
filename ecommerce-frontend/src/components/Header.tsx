@@ -17,11 +17,11 @@ function Header() {
       <a href="/" className="header-logo">
         <img src="/strapi.png" alt="Site logo" />
       </a>
-      <div className="">{user}</div>
+      <div>{user}</div>
       {user ? (
         <>
           <div>
-            <a href="/cart" className="header-menu">
+            <a href="/cart" className="header-cart header-menu">
               Cart ({userCart.length})
             </a>
             <span className="btn-link header-menu" onClick={logout}>

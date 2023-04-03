@@ -26,15 +26,12 @@ export const userSlice = createSlice({
       for (let i = 0; i < action.payload.cart.products.length; i++) {
         cart.push(action.payload.cart.products[i].id)
       }
-      console.log("logg", cart)
 
       sessionStorage.setItem("userCart", JSON.stringify(cart))
     },
     logoutUser: (state) => {
-      // remove token and user cookie
+      // remove token, cookie and user data
       Cookie.remove("token", { sameSite: "strict", secure: true })
-      delete axios.defaults.headers.common["Authorization"]
-
       sessionStorage.removeItem("userId")
       sessionStorage.removeItem("userEmail")
       sessionStorage.removeItem("userCart")
