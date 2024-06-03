@@ -1,7 +1,5 @@
 # Strapi App
 
-I want to say right away that the application is poorly optimized, since my main goal was to implement all the functionality from the task. The main thing that can be improved here is to add Next.js, now requests are sent every time the page is visited, I did this for the test.
-
 Stack used: `Typescript, React, Redux, Strapi Api`
 
 Implemented features: `register, login, get cart, add to cart, remove from cart, get products, product page`
